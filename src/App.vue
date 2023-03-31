@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view/>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import { mapActions } from 'vuex';
+  export default {
+    methods:{
+      ...mapActions(['fetchCompany','fetchAbout', 'fetchProduct','fetchGallery'])
+    },
+    created(){
+      this.fetchCompany();
+      this.fetchAbout();
+      this.fetchProduct();
+      this.fetchGallery();
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root {
+  --kPrimary:#33316E ;
+  --kSecondary :#ffccff;
+  --kHeading : #000000;
+  --kParagraph : #0E743C;
+  --lightPrimary : #e0e8f7;
+
+}
+h1{
+  color: var(--kParagraph)
 }
 </style>
